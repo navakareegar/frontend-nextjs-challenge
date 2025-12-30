@@ -1,3 +1,5 @@
+import { fakeArray } from "@/utils/common";
+
 export default function Loading() {
   const columns = 5;
   const rows = 10;
@@ -47,7 +49,7 @@ export default function Loading() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700/30">
-                {Array.from({ length: rows }).map((_, rowIndex) => (
+                {fakeArray(rows).map((_, rowIndex) => (
                   <tr key={rowIndex}>
                     {Array.from({ length: columns }).map((_, colIndex) => {
                       const widths = [75, 85, 65, 70];

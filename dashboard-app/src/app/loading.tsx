@@ -1,3 +1,5 @@
+import { fakeArray } from "@/utils/common";
+
 export default function Loading() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -51,7 +53,7 @@ export default function Loading() {
           </div>
 
           <div className="space-y-6">
-            {[...Array(2)].map((_, i) => (
+            {fakeArray(2).map((_, i) => (
               <div
                 key={i}
                 className="bg-slate-800/30 border border-slate-700/50 rounded-xl"
