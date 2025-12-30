@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { UserDeleteOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import Link from 'next/link';
+import { UserDeleteOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 
 export default function NotFound() {
   return (

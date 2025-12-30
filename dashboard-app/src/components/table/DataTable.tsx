@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useReactTable,
@@ -9,19 +9,19 @@ import {
   ColumnFiltersState,
   FilterFn,
   Row,
-} from "@tanstack/react-table";
-import { useState, useCallback } from "react";
+} from '@tanstack/react-table';
+import { useState, useCallback } from 'react';
 import {
   SearchOutlined,
   CloseOutlined,
   FilterOutlined,
   ReloadOutlined,
   InboxOutlined,
-} from "@ant-design/icons";
-import Autocomplete from "@/components/inputs/Autocomplete";
-import Dropdown from "@/components/inputs/Dropdown";
+} from '@ant-design/icons';
+import Autocomplete from '@/components/inputs/Autocomplete';
+import Dropdown from '@/components/inputs/Dropdown';
 
-export type TFilterType = "text" | "autocomplete" | "select";
+export type TFilterType = 'text' | 'autocomplete' | 'select';
 
 type TPendingFilters = Record<string, string>;
 
@@ -40,14 +40,14 @@ function ColumnFilter({
   value: string;
   onChange: (columnId: string, value: string) => void;
 }) {
-  const filterType = type ?? "text";
+  const filterType = type ?? 'text';
 
   const handleChange = (newValue: string) => {
     onChange(columnId, newValue);
   };
 
   switch (filterType) {
-    case "autocomplete":
+    case 'autocomplete':
       return (
         <Autocomplete
           options={options ?? []}
@@ -57,7 +57,7 @@ function ColumnFilter({
         />
       );
 
-    case "select":
+    case 'select':
       return (
         <Dropdown
           options={options ?? []}
@@ -67,7 +67,7 @@ function ColumnFilter({
         />
       );
 
-    case "text":
+    case 'text':
     default:
       return (
         <input
@@ -75,7 +75,7 @@ function ColumnFilter({
           value={value}
           onChange={(e) => handleChange(e.target.value)}
           placeholder={placeholder}
-          style={{ color: "#ffffff", backgroundColor: "#1e293b" }}
+          style={{ color: '#ffffff', backgroundColor: '#1e293b' }}
           className="w-full px-2 py-1.5 text-xs border border-slate-600 rounded-md placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
         />
       );
@@ -98,18 +98,18 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
     data,
     columns,
     globalFilterFn,
-    searchPlaceholder = "Search...",
-    emptyMessage = "No results found",
+    searchPlaceholder = 'Search...',
+    emptyMessage = 'No results found',
     showSearch = true,
     showColumnFilters = true,
     columnFilters: columnFilterConfigs = {},
   } = props;
 
-  const [pendingGlobalFilter, setPendingGlobalFilter] = useState("");
+  const [pendingGlobalFilter, setPendingGlobalFilter] = useState('');
   const [pendingColumnFilters, setPendingColumnFilters] =
     useState<TPendingFilters>({});
 
-  const [appliedGlobalFilter, setAppliedGlobalFilter] = useState("");
+  const [appliedGlobalFilter, setAppliedGlobalFilter] = useState('');
   const [appliedColumnFilters, setAppliedColumnFilters] =
     useState<ColumnFiltersState>([]);
 
@@ -129,16 +129,16 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
     const newColumnFilters: ColumnFiltersState = Object.entries(
       pendingColumnFilters
     )
-      .filter(([, value]) => value !== "")
+      .filter(([, value]) => value !== '')
       .map(([id, value]) => ({ id, value }));
 
     setAppliedColumnFilters(newColumnFilters);
   }, [pendingGlobalFilter, pendingColumnFilters]);
 
   const handleResetFilters = useCallback(() => {
-    setPendingGlobalFilter("");
+    setPendingGlobalFilter('');
     setPendingColumnFilters({});
-    setAppliedGlobalFilter("");
+    setAppliedGlobalFilter('');
     setAppliedColumnFilters([]);
   }, []);
 
@@ -150,13 +150,13 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
     const search = filterValue.toLowerCase();
     const values = Object.values(row.original as object);
     return values.some((val) => {
-      if (typeof val === "string") {
+      if (typeof val === 'string') {
         return val.toLowerCase().includes(search);
       }
-      if (typeof val === "object" && val !== null) {
+      if (typeof val === 'object' && val !== null) {
         return Object.values(val).some(
           (nestedVal) =>
-            typeof nestedVal === "string" &&
+            typeof nestedVal === 'string' &&
             nestedVal.toLowerCase().includes(search)
         );
       }
@@ -179,7 +179,7 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
   const hasPendingChanges =
     pendingGlobalFilter !== appliedGlobalFilter ||
     JSON.stringify(
-      Object.entries(pendingColumnFilters).filter(([, v]) => v !== "")
+      Object.entries(pendingColumnFilters).filter(([, v]) => v !== '')
     ) !==
       JSON.stringify(appliedColumnFilters.map(({ id, value }) => [id, value]));
 
@@ -198,7 +198,7 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
             />
             {pendingGlobalFilter && (
               <button
-                onClick={() => setPendingGlobalFilter("")}
+                onClick={() => setPendingGlobalFilter('')}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
               >
                 <CloseOutlined />
@@ -210,11 +210,11 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
 
       <div className="mb-4 flex items-center justify-between flex-wrap gap-4">
         <span className="text-sm text-slate-400">
-          Showing{" "}
+          Showing{' '}
           <span className="text-emerald-400 font-medium">
             {table.getRowModel().rows.length}
-          </span>{" "}
-          of <span className="text-white font-medium">{data.length}</span>{" "}
+          </span>{' '}
+          of <span className="text-white font-medium">{data.length}</span>{' '}
           results
         </span>
 
@@ -225,8 +225,8 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
             onClick={handleApplyFilters}
             className={`p-2 border rounded-lg transition-all duration-200 ${
               hasPendingChanges
-                ? "bg-emerald-500 text-white border-emerald-500 hover:bg-emerald-400 animate-pulse"
-                : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/30 hover:text-emerald-300"
+                ? 'bg-emerald-500 text-white border-emerald-500 hover:bg-emerald-400 animate-pulse'
+                : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/30 hover:text-emerald-300'
             }`}
           >
             <FilterOutlined />
@@ -271,13 +271,13 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
                               placeholder="Filter..."
                               type={
                                 (header.column.columnDef.meta
-                                  ?.filterType as TFilterType) ?? "text"
+                                  ?.filterType as TFilterType) ?? 'text'
                               }
                               options={
                                 columnFilterConfigs[header.column.id]?.options
                               }
                               value={
-                                pendingColumnFilters[header.column.id] ?? ""
+                                pendingColumnFilters[header.column.id] ?? ''
                               }
                               onChange={handlePendingFilterChange}
                             />

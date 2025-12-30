@@ -1,4 +1,4 @@
-import DetailsWrapper from "@/components/pages/user/DetailsWrapper";
+import DetailsWrapper from '@/components/pages/user/DetailsWrapper';
 
 interface IPageProps {
   params: Promise<{ id: string }>;

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 import {
   TeamOutlined,
   EnvironmentOutlined,
@@ -8,8 +8,8 @@ import {
   MailOutlined,
   UserAddOutlined,
   RightOutlined,
-} from "@ant-design/icons";
-import { IUser } from "@/types/user";
+} from '@ant-design/icons';
+import { IUser } from '@/types/user';
 
 interface IDashboardProps {
   users: IUser[];
@@ -56,7 +56,7 @@ export default function Dashboard(props: IDashboardProps) {
             Dashboard
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">
-            Welcome to{" "}
+            Welcome to{' '}
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
               Okian
             </span>

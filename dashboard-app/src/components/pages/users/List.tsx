@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
-import { PlusOutlined } from "@ant-design/icons";
-import { IUser } from "@/types/user";
-import DataTable from "@/components/table/DataTable";
-import ConfirmModal from "@/components/modal/ConfirmModal";
-import { createUserColumns } from "./Columns";
-import { deleteUser } from "@/api/user";
-import { userGlobalFilterFn } from "@/cnfs/UserForm";
+import { useMemo, useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Link from 'next/link';
+import { PlusOutlined } from '@ant-design/icons';
+import { IUser } from '@/types/user';
+import DataTable from '@/components/table/DataTable';
+import ConfirmModal from '@/components/modal/ConfirmModal';
+import { createUserColumns } from './Columns';
+import { deleteUser } from '@/api/user';
+import { userGlobalFilterFn } from '@/cnfs/UserForm';
 
 interface IListProps {
   users: IUser[];
@@ -23,7 +23,7 @@ export default function List(props: IListProps) {
   const deleteMutation = useMutation({
     mutationFn: (id: number) => deleteUser(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries({ queryKey: ['users'] });
       setUserToDelete(null);
     },
   });

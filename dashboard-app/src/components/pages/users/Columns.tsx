@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { createColumnHelper } from "@tanstack/react-table";
-import Link from "next/link";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { IUser } from "@/types/user";
-import { TFilterType } from "@/components/table/DataTable";
+import { createColumnHelper } from '@tanstack/react-table';
+import Link from 'next/link';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { IUser } from '@/types/user';
+import { TFilterType } from '@/components/table/DataTable';
 
-declare module "@tanstack/react-table" {
+declare module '@tanstack/react-table' {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData, TValue> {
     filterType?: TFilterType;
@@ -17,11 +17,11 @@ declare module "@tanstack/react-table" {
 const columnHelper = createColumnHelper<IUser>();
 
 export const createUserColumns = (onDelete?: (user: IUser) => void) => [
-  columnHelper.accessor("name", {
-    header: "Name",
-    filterFn: "includesString",
+  columnHelper.accessor('name', {
+    header: 'Name',
+    filterFn: 'includesString',
     meta: {
-      filterType: "text",
+      filterType: 'text',
     },
     cell: (info) => (
       <Link
@@ -32,35 +32,35 @@ export const createUserColumns = (onDelete?: (user: IUser) => void) => [
       </Link>
     ),
   }),
-  columnHelper.accessor("email", {
-    header: "Email",
-    filterFn: "includesString",
+  columnHelper.accessor('email', {
+    header: 'Email',
+    filterFn: 'includesString',
     meta: {
-      filterType: "text",
+      filterType: 'text',
     },
     cell: (info) => <span className="text-slate-300">{info.getValue()}</span>,
   }),
   columnHelper.accessor((row) => row.company.name, {
-    id: "company",
-    header: "Company",
-    filterFn: "includesString",
+    id: 'company',
+    header: 'Company',
+    filterFn: 'includesString',
     meta: {
-      filterType: "select",
+      filterType: 'select',
     },
     cell: (info) => <span className="text-cyan-400">{info.getValue()}</span>,
   }),
   columnHelper.accessor((row) => row.address.city, {
-    id: "city",
-    header: "City",
-    filterFn: "includesString",
+    id: 'city',
+    header: 'City',
+    filterFn: 'includesString',
     meta: {
-      filterType: "autocomplete",
+      filterType: 'autocomplete',
     },
     cell: (info) => <span className="text-slate-400">{info.getValue()}</span>,
   }),
   columnHelper.display({
-    id: "actions",
-    header: "Actions",
+    id: 'actions',
+    header: 'Actions',
     meta: {
       hideFilter: true,
     },

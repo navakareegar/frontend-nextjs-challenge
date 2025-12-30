@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import {
   ArrowLeftOutlined,
   EditOutlined,
@@ -10,11 +10,11 @@ import {
   UserOutlined,
   EnvironmentOutlined,
   BankOutlined,
-} from "@ant-design/icons";
-import { IUser } from "@/types/user";
-import ConfirmModal from "@/components/modal/ConfirmModal";
-import UserFormPage from "./AddEditForm";
-import { deleteUser } from "@/api/user";
+} from '@ant-design/icons';
+import { IUser } from '@/types/user';
+import ConfirmModal from '@/components/modal/ConfirmModal';
+import UserFormPage from './AddEditForm';
+import { deleteUser } from '@/api/user';
 
 interface IDetailsProps {
   user?: IUser;
@@ -32,8 +32,8 @@ export default function Details(props: IDetailsProps) {
   const deleteMutation = useMutation({
     mutationFn: () => deleteUser(user.id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-      router.push("/users");
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      router.push('/users');
     },
   });
 

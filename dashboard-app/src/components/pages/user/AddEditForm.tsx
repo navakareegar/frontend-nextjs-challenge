@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import useForm from "@/hooks/useForm";
-import { IUser } from "@/types/user";
-import { createUser, updateUser } from "@/api/user";
-import { formConfig, FormData, formSchema } from "@/cnfs/UserForm";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import useForm from '@/hooks/useForm';
+import { IUser } from '@/types/user';
+import { createUser, updateUser } from '@/api/user';
+import { formConfig, FormData, formSchema } from '@/cnfs/UserForm';
 
 interface IAddEditFormProps {
   user?: IUser;
@@ -22,15 +22,15 @@ export default function AddEditForm(props: IAddEditFormProps) {
   const queryClient = useQueryClient();
 
   const isEditMode = !!user;
-  const userId = user ? String(user.id) : "";
+  const userId = user ? String(user.id) : '';
 
   const createMutation = useMutation({
     mutationFn: createUser,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries({ queryKey: ['users'] });
       onSuccess?.();
       if (!inline) {
-        router.push("/users");
+        router.push('/users');
       }
     },
   });
@@ -38,8 +38,8 @@ export default function AddEditForm(props: IAddEditFormProps) {
   const updateMutation = useMutation({
     mutationFn: (data: FormData) => updateUser(userId, data),
     onSuccess: (updatedUser) => {
-      queryClient.setQueryData(["user", userId], updatedUser);
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.setQueryData(['user', userId], updatedUser);
+      queryClient.invalidateQueries({ queryKey: ['users'] });
       onSuccess?.();
       if (!inline) {
         router.refresh();
@@ -73,15 +73,15 @@ export default function AddEditForm(props: IAddEditFormProps) {
         phone: user.phone,
         website: user.website,
         address: {
-          street: user.address?.street || "",
-          suite: user.address?.suite || "",
-          city: user.address?.city || "",
-          zipcode: user.address?.zipcode || "",
+          street: user.address?.street || '',
+          suite: user.address?.suite || '',
+          city: user.address?.city || '',
+          zipcode: user.address?.zipcode || '',
         },
         company: {
-          name: user.company?.name || "",
-          catchPhrase: user.company?.catchPhrase || "",
-          bs: user.company?.bs || "",
+          name: user.company?.name || '',
+          catchPhrase: user.company?.catchPhrase || '',
+          bs: user.company?.bs || '',
         },
       }
     : undefined;
@@ -101,8 +101,8 @@ export default function AddEditForm(props: IAddEditFormProps) {
       {mutation.error instanceof Error
         ? mutation.error.message
         : isEditMode
-        ? "Failed to update user"
-        : "Failed to create user"}
+          ? 'Failed to update user'
+          : 'Failed to create user'}
     </div>
   ) : null;
 
@@ -128,10 +128,10 @@ export default function AddEditForm(props: IAddEditFormProps) {
 
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">
-            {isEditMode ? "Edit User" : "Add New User"}
+            {isEditMode ? 'Edit User' : 'Add New User'}
           </h1>
           <p className="text-slate-400">
-            {isEditMode ? `Editing ${user?.name}` : "Create a new user account"}
+            {isEditMode ? `Editing ${user?.name}` : 'Create a new user account'}
           </p>
         </div>
 

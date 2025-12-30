@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import {
   ExclamationCircleOutlined,
   WarningOutlined,
   InfoCircleOutlined,
   LoadingOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 interface IConfirmModalProps {
   isOpen: boolean;
@@ -16,7 +16,7 @@ interface IConfirmModalProps {
   onConfirm: () => void;
   onCancel: () => void;
   isLoading?: boolean;
-  variant?: "danger" | "warning" | "info";
+  variant?: 'danger' | 'warning' | 'info';
 }
 
 export default function ConfirmModal(props: IConfirmModalProps) {
@@ -24,12 +24,12 @@ export default function ConfirmModal(props: IConfirmModalProps) {
     isOpen,
     title,
     message,
-    confirmText = "Confirm",
-    cancelText = "Cancel",
+    confirmText = 'Confirm',
+    cancelText = 'Cancel',
     onConfirm,
     onCancel,
     isLoading = false,
-    variant = "danger",
+    variant = 'danger',
   } = props;
 
   if (!isOpen) return null;
@@ -37,18 +37,18 @@ export default function ConfirmModal(props: IConfirmModalProps) {
   const variantStyles = {
     danger: {
       icon: <ExclamationCircleOutlined className="text-2xl text-red-400" />,
-      bgColor: "bg-red-500/10",
-      buttonBg: "bg-red-500 hover:bg-red-400",
+      bgColor: 'bg-red-500/10',
+      buttonBg: 'bg-red-500 hover:bg-red-400',
     },
     warning: {
       icon: <WarningOutlined className="text-2xl text-amber-400" />,
-      bgColor: "bg-amber-500/10",
-      buttonBg: "bg-amber-500 hover:bg-amber-400",
+      bgColor: 'bg-amber-500/10',
+      buttonBg: 'bg-amber-500 hover:bg-amber-400',
     },
     info: {
       icon: <InfoCircleOutlined className="text-2xl text-cyan-400" />,
-      bgColor: "bg-cyan-500/10",
-      buttonBg: "bg-cyan-500 hover:bg-cyan-400",
+      bgColor: 'bg-cyan-500/10',
+      buttonBg: 'bg-cyan-500 hover:bg-cyan-400',
     },
   };
 

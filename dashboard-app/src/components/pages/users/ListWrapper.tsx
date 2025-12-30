@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useQuery } from "@tanstack/react-query";
-import List from "./List";
-import { fetchUsers } from "@/api/user";
-import Loading from "@/app/users/loading";
-import NotFound from "@/components/pages/NotFound";
-import Error from "@/app/error";
+import { useQuery } from '@tanstack/react-query';
+import List from './List';
+import { fetchUsers } from '@/api/user';
+import Loading from '@/app/users/loading';
+import NotFound from '@/components/pages/NotFound';
+import Error from '@/app/error';
 
 export default function UsersListPage() {
   const {
@@ -14,7 +14,7 @@ export default function UsersListPage() {
     isError,
     error,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: fetchUsers,
   });
 

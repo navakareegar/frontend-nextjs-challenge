@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useForm,
@@ -6,11 +6,11 @@ import {
   DefaultValues,
   Resolver,
   FieldErrors,
-} from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { LoadingOutlined, CheckOutlined } from "@ant-design/icons";
-import { z } from "zod";
-import { IFormConfig, IFieldConfig } from "./types";
+} from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoadingOutlined, CheckOutlined } from '@ant-design/icons';
+import { z } from 'zod';
+import { IFormConfig, IFieldConfig } from './types';
 
 interface IDynamicFormProps<T extends FieldValues> {
   config: IFormConfig<T>;
@@ -26,11 +26,11 @@ function getNestedError(
   errors: FieldErrors,
   path: string
 ): { message?: string } | undefined {
-  const parts = path.split(".");
+  const parts = path.split('.');
   let current: unknown = errors;
 
   for (const part of parts) {
-    if (current && typeof current === "object" && part in current) {
+    if (current && typeof current === 'object' && part in current) {
       current = (current as Record<string, unknown>)[part];
     } else {
       return undefined;
@@ -64,7 +64,7 @@ export default function DynamicForm<T extends FieldValues>(
   });
 
   const inputBaseClass =
-    "w-full bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed";
+    'w-full bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed';
 
   const renderField = (field: IFieldConfig<T>) => {
     if (field.hidden) return null;
@@ -77,21 +77,21 @@ export default function DynamicForm<T extends FieldValues>(
       disabled: field.disabled,
       readOnly: field.readonly,
       className: inputBaseClass,
-      style: { padding: "0.5rem 1rem" },
+      style: { padding: '0.5rem 1rem' },
     };
 
     switch (field.type) {
-      case "textarea":
+      case 'textarea':
         return (
           <textarea
             {...commonProps}
             rows={field.rows || 3}
             maxLength={field.maxLength}
-            style={{ padding: "0.5rem 1rem", minHeight: "80px" }}
+            style={{ padding: '0.5rem 1rem', minHeight: '80px' }}
           />
         );
 
-      case "select":
+      case 'select':
         return (
           <select {...commonProps}>
             <option value="">Select...</option>
@@ -103,7 +103,7 @@ export default function DynamicForm<T extends FieldValues>(
           </select>
         );
 
-      case "number":
+      case 'number':
         return (
           <input
             {...commonProps}
@@ -114,25 +114,25 @@ export default function DynamicForm<T extends FieldValues>(
           />
         );
 
-      case "email":
+      case 'email':
         return (
           <input {...commonProps} type="email" maxLength={field.maxLength} />
         );
 
-      case "tel":
+      case 'tel':
         return (
           <input {...commonProps} type="tel" maxLength={field.maxLength} />
         );
 
-      case "password":
+      case 'password':
         return (
           <input {...commonProps} type="password" maxLength={field.maxLength} />
         );
 
-      case "date":
+      case 'date':
         return <input {...commonProps} type="date" />;
 
-      case "checkbox":
+      case 'checkbox':
         return (
           <input
             {...fieldProps}
@@ -160,10 +160,10 @@ export default function DynamicForm<T extends FieldValues>(
   };
 
   const {
-    submitLabel = "Create",
-    updateLabel = "Update",
-    cancelLabel = "Cancel",
-    loadingLabel = "Saving...",
+    submitLabel = 'Create',
+    updateLabel = 'Update',
+    cancelLabel = 'Cancel',
+    loadingLabel = 'Saving...',
   } = config;
 
   return (
@@ -198,9 +198,9 @@ export default function DynamicForm<T extends FieldValues>(
               if (field.hidden) return null;
 
               const error = getNestedError(errors, field.name as string);
-              const colSpanClass = field.colSpan === 2 ? "sm:col-span-2" : "";
+              const colSpanClass = field.colSpan === 2 ? 'sm:col-span-2' : '';
 
-              if (field.type === "checkbox") {
+              if (field.type === 'checkbox') {
                 return (
                   <div
                     key={field.name as string}
@@ -238,13 +238,13 @@ export default function DynamicForm<T extends FieldValues>(
 
       <div
         className="flex items-center justify-end gap-3 border-t border-slate-700"
-        style={{ paddingTop: "1rem" }}
+        style={{ paddingTop: '1rem' }}
       >
         <button
           type="button"
           onClick={onCancel}
           className="text-slate-400 hover:text-white transition-colors"
-          style={{ padding: "0.5rem 1rem" }}
+          style={{ padding: '0.5rem 1rem' }}
         >
           {cancelLabel}
         </button>
@@ -252,7 +252,7 @@ export default function DynamicForm<T extends FieldValues>(
           type="submit"
           disabled={isLoading}
           className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-lg font-medium shadow-lg hover:shadow-emerald-500/25 hover:from-emerald-400 hover:to-cyan-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-          style={{ padding: "0.5rem 1.5rem" }}
+          style={{ padding: '0.5rem 1.5rem' }}
         >
           {isLoading ? (
             <>

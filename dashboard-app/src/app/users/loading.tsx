@@ -1,9 +1,9 @@
-import { fakeArray } from "@/utils/common";
+import { fakeArray } from '@/utils/common';
 
 export default function Loading() {
   const columns = 5;
   const rows = 10;
-  const columnHeaders = ["Name", "Email", "Company", "City", "Actions"];
+  const columnHeaders = ['Name', 'Email', 'Company', 'City', 'Actions'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -40,7 +40,7 @@ export default function Loading() {
                     >
                       <div className="space-y-1.5 sm:space-y-2">
                         <div>{header}</div>
-                        {header !== "Actions" && (
+                        {header !== 'Actions' && (
                           <div className="h-7 sm:h-8 bg-slate-700/50 rounded-md animate-pulse"></div>
                         )}
                       </div>

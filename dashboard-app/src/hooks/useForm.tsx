@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import DynamicForm from "@/components/form/DynamicForm";
-import { IFormConfig } from "@/components/form/types";
-import { FieldValues, DefaultValues } from "react-hook-form";
-import { z } from "zod";
+import DynamicForm from '@/components/form/DynamicForm';
+import { IFormConfig } from '@/components/form/types';
+import { FieldValues, DefaultValues } from 'react-hook-form';
+import { z } from 'zod';
 
 interface IUseFormProps<T extends FieldValues> {
   config: IFormConfig<T>;

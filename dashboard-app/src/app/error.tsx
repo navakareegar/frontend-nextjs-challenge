@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { HomeOutlined, WarningOutlined } from "@ant-design/icons";
+import Link from 'next/link';
+import { HomeOutlined, WarningOutlined } from '@ant-design/icons';
 
 interface IErrorProps {
   error: Error & { digest?: string };
@@ -10,7 +10,7 @@ interface IErrorProps {
 export default function Error(props: IErrorProps) {
   const { error } = props;
   const message =
-    error instanceof Error ? error.message : "An unexpected error occurred";
+    error instanceof Error ? error.message : 'An unexpected error occurred';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
@@ -20,7 +20,7 @@ export default function Error(props: IErrorProps) {
         </div>
         <h1 className="text-2xl font-bold text-white mb-2">{message}</h1>
         <p className="text-slate-400 mb-6">
-          {error.message || "An unexpected error occurred"}
+          {error.message || 'An unexpected error occurred'}
         </p>
         <div className="flex items-center justify-center gap-3">
           <Link

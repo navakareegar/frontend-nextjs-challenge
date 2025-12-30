@@ -1,16 +1,16 @@
-import { Path, FieldValues } from "react-hook-form";
-import React from "react";
+import { Path, FieldValues } from 'react-hook-form';
+import React from 'react';
 
 export type TFieldType =
-  | "text"
-  | "email"
-  | "tel"
-  | "number"
-  | "password"
-  | "textarea"
-  | "select"
-  | "checkbox"
-  | "date";
+  | 'text'
+  | 'email'
+  | 'tel'
+  | 'number'
+  | 'password'
+  | 'textarea'
+  | 'select'
+  | 'checkbox'
+  | 'date';
 
 export interface ISelectOption {
   value: string;

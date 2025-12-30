@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
 interface IAutocompleteProps {
   options: string[];
@@ -15,8 +15,8 @@ export default function Autocomplete(props: IAutocompleteProps) {
     options,
     value,
     onChange,
-    placeholder = "Search...",
-    className = "",
+    placeholder = 'Search...',
+    className = '',
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -49,8 +49,8 @@ export default function Autocomplete(props: IAutocompleteProps) {
         setIsOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,8 +67,8 @@ export default function Autocomplete(props: IAutocompleteProps) {
   };
 
   const handleClear = () => {
-    setInputValue("");
-    onChange("");
+    setInputValue('');
+    onChange('');
     inputRef.current?.focus();
   };
 
@@ -82,7 +82,7 @@ export default function Autocomplete(props: IAutocompleteProps) {
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
           placeholder={placeholder}
-          style={{ color: "#ffffff", backgroundColor: "#1e293b" }}
+          style={{ color: '#ffffff', backgroundColor: '#1e293b' }}
           className="w-full px-2 py-1.5 text-xs border border-slate-600 rounded-md placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition-all pr-6"
         />
         {inputValue && (
@@ -115,8 +115,8 @@ export default function Autocomplete(props: IAutocompleteProps) {
               onClick={() => handleOptionClick(option)}
               className={`w-full px-3 py-2 text-left text-xs text-slate-300 hover:bg-slate-700 hover:text-white transition-colors ${
                 option.toLowerCase() === inputValue.toLowerCase()
-                  ? "bg-emerald-500/20 text-emerald-400"
-                  : ""
+                  ? 'bg-emerald-500/20 text-emerald-400'
+                  : ''
               }`}
             >
               {option}

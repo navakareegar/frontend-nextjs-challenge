@@ -1,4 +1,4 @@
-import { fakeArray } from "@/utils/common";
+import { fakeArray } from '@/utils/common';
 
 export default function Loading() {
   return (
@@ -15,7 +15,7 @@ export default function Loading() {
             <div
               key={i}
               className="bg-slate-800/30 border border-slate-700/50 rounded-xl"
-              style={{ padding: "1.25rem" }}
+              style={{ padding: '1.25rem' }}
             >
               <div className="w-10 h-10 bg-slate-700/50 rounded-lg animate-pulse mb-3"></div>
               <div className="h-7 w-12 bg-slate-700/50 rounded animate-pulse mb-2"></div>
@@ -32,7 +32,7 @@ export default function Loading() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div
             className="lg:col-span-2 bg-slate-800/30 border border-slate-700/50 rounded-xl"
-            style={{ padding: "1.5rem" }}
+            style={{ padding: '1.5rem' }}
           >
             <div className="h-6 w-32 bg-slate-700/50 rounded animate-pulse mb-4"></div>
             <div className="space-y-3">
@@ -40,7 +40,7 @@ export default function Loading() {
                 <div
                   key={i}
                   className="flex items-center gap-4 bg-slate-700/30 rounded-lg"
-                  style={{ padding: "0.75rem" }}
+                  style={{ padding: '0.75rem' }}
                 >
                   <div className="w-10 h-10 bg-slate-700/50 rounded-full animate-pulse"></div>
                   <div className="flex-1">
@@ -57,7 +57,7 @@ export default function Loading() {
               <div
                 key={i}
                 className="bg-slate-800/30 border border-slate-700/50 rounded-xl"
-                style={{ padding: "1.5rem" }}
+                style={{ padding: '1.5rem' }}
               >
                 <div className="h-6 w-28 bg-slate-700/50 rounded animate-pulse mb-4"></div>
                 <div className="space-y-3">

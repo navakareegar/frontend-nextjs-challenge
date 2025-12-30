@@ -1,4 +1,4 @@
-import { fakeArray } from "@/utils/common";
+import { fakeArray } from '@/utils/common';
 
 export default function Loading() {
   return (

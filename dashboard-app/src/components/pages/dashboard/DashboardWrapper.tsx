@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useQuery } from "@tanstack/react-query";
-import { TeamOutlined } from "@ant-design/icons";
-import Dashboard from "./Dashboard";
-import { fetchUsers } from "@/api/user";
-import Loading from "@/app/loading";
-import NotFound from "@/components/pages/NotFound";
-import Error from "@/app/error";
+import { useQuery } from '@tanstack/react-query';
+import { TeamOutlined } from '@ant-design/icons';
+import Dashboard from './Dashboard';
+import { fetchUsers } from '@/api/user';
+import Loading from '@/app/loading';
+import NotFound from '@/components/pages/NotFound';
+import Error from '@/app/error';
 
 export default function DashboardWrapper() {
   const {
@@ -15,7 +15,7 @@ export default function DashboardWrapper() {
     isError,
     error,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: fetchUsers,
   });
 
