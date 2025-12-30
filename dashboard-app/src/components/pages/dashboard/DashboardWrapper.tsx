@@ -1,7 +1,6 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { TeamOutlined } from '@ant-design/icons';
 import Dashboard from './Dashboard';
 import { fetchUsers } from '@/api/user';
 import Loading from '@/app/loading';

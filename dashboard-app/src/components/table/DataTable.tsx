@@ -84,6 +84,7 @@ function ColumnFilter({
 
 interface IDataTableProps<T> {
   data: T[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<T, any>[];
   globalFilterFn?: FilterFn<T>;
   searchPlaceholder?: string;
@@ -164,6 +165,7 @@ export default function DataTable<T>(props: IDataTableProps<T>) {
     });
   };
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data,
     columns,
