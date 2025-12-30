@@ -49,26 +49,35 @@ export default function Loading() {
               <tbody className="divide-y divide-slate-700/30">
                 {Array.from({ length: rows }).map((_, rowIndex) => (
                   <tr key={rowIndex}>
-                    {Array.from({ length: columns }).map((_, colIndex) => (
-                      <td key={colIndex} className="px-3 sm:px-6 py-3 sm:py-4">
-                        {colIndex === columns - 1 ? (
-                          <div className="flex gap-2">
-                            <div className="h-6 w-6 bg-slate-700/40 rounded animate-pulse"></div>
-                            <div className="h-6 w-6 bg-slate-700/40 rounded animate-pulse"></div>
-                          </div>
-                        ) : (
-                          <div
-                            className="h-4 sm:h-5 bg-slate-700/40 rounded animate-pulse"
-                            style={{
-                              width: `${60 + Math.random() * 30}%`,
-                              animationDelay: `${
-                                rowIndex * 50 + colIndex * 25
-                              }ms`,
-                            }}
-                          ></div>
-                        )}
-                      </td>
-                    ))}
+                    {Array.from({ length: columns }).map((_, colIndex) => {
+                      const widths = [75, 85, 65, 70];
+                      const width =
+                        widths[(rowIndex + colIndex) % widths.length];
+
+                      return (
+                        <td
+                          key={colIndex}
+                          className="px-3 sm:px-6 py-3 sm:py-4"
+                        >
+                          {colIndex === columns - 1 ? (
+                            <div className="flex gap-2">
+                              <div className="h-6 w-6 bg-slate-700/40 rounded animate-pulse"></div>
+                              <div className="h-6 w-6 bg-slate-700/40 rounded animate-pulse"></div>
+                            </div>
+                          ) : (
+                            <div
+                              className="h-4 sm:h-5 bg-slate-700/40 rounded animate-pulse"
+                              style={{
+                                width: `${width}%`,
+                                animationDelay: `${
+                                  rowIndex * 50 + colIndex * 25
+                                }ms`,
+                              }}
+                            ></div>
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
